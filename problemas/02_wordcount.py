@@ -51,8 +51,7 @@ def read_file(filename):
     with open(filename, 'r') as file:
         return file.read()
 
-
-def print_words(filename):
+def count_words(filename):
     text = read_file(filename)
 
     lower = text.lower()
@@ -65,8 +64,26 @@ def print_words(filename):
     for word in wordlist:
         wordcount[word] += 1
 
+    return wordcount
+
+
+def print_words(filename):
+
+    wordcount = count_words(filename)
+
     for word, count in wordcount.items():
         print(f"{word} {count}")
+
+
+def print_top(filename):
+    wordcount = count_words(filename)
+
+    sorted_values = sorted(wordcount.values(), reverse=True)
+
+    for value in sorted_values:
+        for word, count in wordcount.items():
+            if count == value:
+                print(f"{word} {count}")
 
 
 # A função abaixo chama print_words() ou print_top() de acordo com os
