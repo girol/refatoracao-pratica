@@ -11,11 +11,17 @@ e donuts(23) retorna 'Number of donuts: many'
 
 
 def donuts(count):
-     return
+    base_sentence = 'Number of donuts: '
 
+    if count >= 10:
+        return base_sentence + "many"
+
+    return f"{base_sentence}{count}"
 
 def test_donuts():
     assert donuts(4) == 'Number of donuts: 4'
     assert donuts(9) == 'Number of donuts: 9'
     assert donuts(10) == 'Number of donuts: many'
     assert donuts(99) == 'Number of donuts: many'
+
+test_donuts()
