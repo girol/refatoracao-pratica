@@ -47,7 +47,26 @@ Seu trabalho é implementar as funções print_words() e depois print_top().
 import sys
 
 
-# SEU CÓDIGO AQUI...
+def read_file(filename):
+    with open(filename, 'r') as file:
+        return file.read()
+
+
+def print_words(filename):
+    text = read_file(filename)
+
+    lower = text.lower()
+    wordlist = lower.split(" ")
+    unique = set(wordlist)
+
+    # Inicializa um dict vazio
+    wordcount = dict.fromkeys(unique, 0)
+
+    for word in wordlist:
+        wordcount[word] += 1
+
+    for word, count in wordcount.items():
+        print(f"{word} {count}")
 
 
 # A função abaixo chama print_words() ou print_top() de acordo com os
